@@ -1,76 +1,37 @@
 package com.weisser.sarah.wineapp.model.wine;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
+
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Wine {
 
-    // TODO add full list of attributes to this entity
+    // TODO add full list of attributes to this entity once database is set up
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    // TODO  rename attributes for name and recreate db table
-
-    private String name;
-    private BigDecimal purchasePrice;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")
-    private Date purchaseDate;
-    private boolean red;
-    //    private String wineryName;
-//    private int vintage;
+    // TODO decide if it makes sense to enforce uniqueness on wineryname column
+    private String wineryName;
+    private String wineName;
+    // Non Vintage wines will have -1 for vintage
+    private int vintage;
+    private String appellation;
+    private String description;
+    private float starRating;
 
 //    private WineColor wineColor;
 //    private WineType wineType;
 //    private List<Varietal> varietals;
 //    private List<String> flavors;
 //    private List<Pairing> parings;
-//    private String appellation;
-//    private String description;
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public BigDecimal getPurchasePrice() {
-        return purchasePrice;
-    }
-
-    public void setPurchasePrice(BigDecimal purchasePrice) {
-        this.purchasePrice = purchasePrice;
-    }
-
-    public Date getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public void setPurchaseDate(Date purchaseDate) {
-        this.purchaseDate = purchaseDate;
-    }
-
-    public boolean isRed() {
-        return red;
-    }
-
-    public void setRed(boolean red) {
-        this.red = red;
-    }
 
     public Long getId() {
         return id;
@@ -80,4 +41,51 @@ public class Wine {
         this.id = id;
     }
 
+    public String getWineryName() {
+        return wineryName;
+    }
+
+    public void setWineryName(String wineryName) {
+        this.wineryName = wineryName;
+    }
+
+    public String getWineName() {
+        return wineName;
+    }
+
+    public void setWineName(String wineName) {
+        this.wineName = wineName;
+    }
+
+    public int getVintage() {
+        return vintage;
+    }
+
+    public void setVintage(int vintage) {
+        this.vintage = vintage;
+    }
+
+    public String getAppellation() {
+        return appellation;
+    }
+
+    public void setAppellation(String appellation) {
+        this.appellation = appellation;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public float getStarRating() {
+        return starRating;
+    }
+
+    public void setStarRating(float starRating) {
+        this.starRating = starRating;
+    }
 }
